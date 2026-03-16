@@ -1,6 +1,6 @@
 {
 	"name": "@zennolab_com/n8n-nodes-capmonstercloud",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "n8n node for solving captchas using CapMonster Cloud API",
 	"author": {
 		"name": "ZennoLab",
@@ -27,7 +27,9 @@
 		"release": "n8n-node release",
 		"prepublishOnly": "n8n-node prerelease"
 	},
-	"files": ["dist"],
+	"files": [
+		"dist"
+	],
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"strict": true,
