@@ -5,8 +5,8 @@ import {
 	INodeTypeDescription,
 	NodeOperationError,
 	IDataObject,
+	sleep,
 } from 'n8n-workflow';
-
 
 type CapmonsterResponse = {
 	errorId: number;
@@ -45,19 +45,18 @@ const waitForResult = async (
 		})) as TaskResultResponse;
 
 		if (result.errorId !== 0) {
-			throw new Error(result.errorDescription || 'CapMonster error');
+			throw new NodeOperationError(context.getNode(), result.errorDescription || 'CapMonster error');
 		}
 
 		if (result.status === 'ready') {
 			return result.solution ?? {};
 		}
 
-		await new Promise((resolve) => setTimeout(resolve, delay));
+		await sleep(delay);
 	}
 
-	throw new Error('Timeout: captcha not solved');
+	throw new NodeOperationError(context.getNode(), 'Timeout: captcha not solved');
 };
-
 
 export class CapmonsterCloud implements INodeType {
 	description: INodeTypeDescription = {
@@ -88,6 +87,7 @@ export class CapmonsterCloud implements INodeType {
 				description: 'CapMonster "task" object. Do not include clientKey.',
 			},
 		],
+		usableAsTool: true,
 	};
 
 	async execute(this: IExecuteFunctions): Promise<INodeExecutionData[][]> {
@@ -104,7 +104,7 @@ export class CapmonsterCloud implements INodeType {
 				try {
 					task = JSON.parse(raw) as IDataObject;
 				} catch {
-					throw new Error('Invalid JSON in Task Payload');
+					throw new NodeOperationError(this.getNode(), 'Invalid JSON in Task Payload', { itemIndex: i });
 				}
 
 				const createTask = (await request(this, 'https://api.capmonster.cloud/createTask', {
@@ -113,7 +113,7 @@ export class CapmonsterCloud implements INodeType {
 				})) as CreateTaskResponse;
 
 				if (createTask.errorId !== 0) {
-					throw new Error(createTask.errorDescription || 'CreateTask failed');
+					throw new NodeOperationError(this.getNode(), createTask.errorDescription || 'CreateTask failed', { itemIndex: i });
 				}
 
 				const solution = await waitForResult(this, apiKey, createTask.taskId);

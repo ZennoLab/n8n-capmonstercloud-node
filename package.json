@@ -1,21 +1,22 @@
 {
-	"name": "n8n-nodes-capmonstercloud",
+	"name": "@zennolab_com/n8n-nodes-capmonstercloud",
 	"version": "0.0.1",
-	"description": "",
+	"description": "n8n node for solving captchas using CapMonster Cloud API",
+	"author": {
+		"name": "ZennoLab",
+		"email": "support@zennolab.com"
+	},
 	"license": "MIT",
 	"homepage": "https://github.com/ZennoLab/n8n-capmonstercloud-node",
 	"keywords": [
 		"n8n-capmonstercloud-node",
 		"CapMonster",
-		"CapMonster Cloud"
+		"CapMonster Cloud",
+		"n8n-community-node-package"
 	],
-	"author": {
-		"name": "",
-		"email": ""
-	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/ZennoLab//n8n-capmonstercloud-node.git"
+		"url": "git+https://github.com/ZennoLab/n8n-capmonstercloud-node.git"
 	},
 	"scripts": {
 		"build": "n8n-node build",
@@ -26,17 +27,15 @@
 		"release": "n8n-node release",
 		"prepublishOnly": "n8n-node prerelease"
 	},
-	"files": [
-		"dist"
-	],
+	"files": ["dist"],
 	"n8n": {
 		"n8nNodesApiVersion": 1,
 		"strict": true,
 		"credentials": [
-			"dist/credentials/CapmonsterCloudApi.credentials"
+			"dist/credentials/CapmonsterCloudApi.credentials.js"
 		],
 		"nodes": [
-			"dist/nodes/CapmonsterCloud/CapmonsterCloud.node.js"
+			"dist/credentials/CapmonsterCloud/CapmonsterCloud.node.js"
 		]
 	},
 	"devDependencies": {
