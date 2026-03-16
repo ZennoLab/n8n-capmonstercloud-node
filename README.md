@@ -18,13 +18,7 @@
       {
           "type":"RecaptchaV2Task",
           "websiteURL":"https://lessons.zennolab.com/captchas/recaptcha/v2_simple.php?level=high",
-          "websiteKey":"6Lcg7CMUAAAAANphynKgn9YAgA4tQ2KI_iqRyTwd",
-          "proxyType":"http",
-          "proxyAddress":"8.8.8.8",
-          "proxyPort":8080,
-          "proxyLogin":"proxyLoginHere",
-          "proxyPassword":"proxyPasswordHere",
-          "userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36"
+          "websiteKey":"6Lcg7CMUAAAAANphynKgn9YAgA4tQ2KI_iqRyTwd"
       }
       ```
 5. **Execution**: The node will automatically:
