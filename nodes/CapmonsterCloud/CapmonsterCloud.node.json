@@ -6,7 +6,7 @@
 	"resources": {
 		"primaryDocumentation": [
 			{
-				"url": "https://docs.capmonster.cloud/"
+				"url": "https://www.npmjs.com/package/n8n-capmonstercloud-node"
 			}
 		]
 	}
