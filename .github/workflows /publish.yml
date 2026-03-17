@@ -1,12 +1,14 @@
 name: Publish n8n Node
 
 on:
-  push:
-    branches: [ "main" ]
+  pull_request:
+    types: [closed]
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
   build-and-publish:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     permissions:
@@ -28,7 +30,6 @@ jobs:
 
       - name: Build Node
         run: npm run build
-
 
       - name: Publish to npm
         run: npm publish --provenance --access public
