@@ -9,10 +9,11 @@
 	"license": "MIT",
 	"homepage": "https://github.com/ZennoLab/n8n-capmonstercloud-node",
 	"keywords": [
-		"n8n-capmonstercloud-node",
-		"CapMonster",
-		"CapMonster Cloud",
-		"n8n-community-node-package"
+		"n8n-community-node-package",
+		"n8n",
+		"n8n-nodes",
+		"captcha",
+		"capmonster"
 	],
 	"repository": {
 		"type": "git",
@@ -37,8 +38,9 @@
 			"dist/credentials/CapmonsterCloudApi.credentials.js"
 		],
 		"nodes": [
-			"dist/credentials/CapmonsterCloud/CapmonsterCloud.node.js"
-		]
+			"dist/nodes/CapmonsterCloud/CapmonsterCloud.node.js"
+		],
+		"community": true
 	},
 	"devDependencies": {
 		"@n8n/node-cli": "*",
