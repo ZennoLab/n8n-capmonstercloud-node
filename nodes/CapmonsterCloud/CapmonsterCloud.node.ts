@@ -11,6 +11,7 @@ import { request, waitForResult } from './transport/request';
 import { taskBuilders } from './tasks';
 import allFields from './descriptions';
 import { TaskType } from './types';
+import { softId } from './const';
 
 type CapmonsterResponse = {
 	errorId: number;
@@ -93,6 +94,7 @@ export class CapmonsterCloud implements INodeType {
 				const createTask = (await request(this, 'https://api.capmonster.cloud/createTask', {
 					clientKey: apiKey,
 					task,
+					softId,
 				})) as CreateTaskResponse;
 
 				if (createTask.errorId !== 0) {

@@ -5,6 +5,7 @@ import {
 	IAuthenticateGeneric,
 	ICredentialTestRequest,
 } from 'n8n-workflow';
+import { softId } from '../nodes/CapmonsterCloud/const';
 
 export class CapmonsterCloudApi implements ICredentialType {
 	name = 'capmonsterCloudApi';
@@ -29,6 +30,7 @@ export class CapmonsterCloudApi implements ICredentialType {
 		properties: {
 			body: {
 				clientKey: '={{$credentials.apiKey}}',
+				softId,
 			},
 		},
 	};

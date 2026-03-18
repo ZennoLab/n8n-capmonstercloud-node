@@ -1,4 +1,5 @@
 import { IExecuteFunctions, IDataObject, NodeOperationError, sleep } from 'n8n-workflow';
+import { softId } from '../const';
 
 export const request = async (
 	context: IExecuteFunctions,
@@ -24,6 +25,7 @@ export const waitForResult = async (
 		const result = await request(context, 'https://api.capmonster.cloud/getTaskResult', {
 			clientKey: apiKey,
 			taskId,
+			softId,
 		});
 
 		if (result.errorId !== 0) {
