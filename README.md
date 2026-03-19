@@ -17,7 +17,7 @@
 ![img.png](images/keyNode.png)
 4. Select Task Type:
 
-![img.png](images/selectCaptcha.png)
+![selectCaptcha.png](images/selectCaptcha.png)
 
 - Use the Task Type dropdown to choose the kind of captcha you want to solve:
   - JSON (Custom Task) – supply any valid CapMonster task JSON.
@@ -28,15 +28,14 @@
   - Cloudflare Turnstile (token, managed challenge, waiting room)
   - Complex Image Tasks (click, recognition)
   - DataDome, Basilisk, TenDI, Amazon (multiple variants), Binance, Imperva, Prosopo, Temu, Yidun, MTCaptcha, Altcha, FunCaptcha, Castle, TSPD, Hunt
-- Some task types support optional proxy settings.
-![img_5.png](images/img_5.png)
+  - Some task types support optional proxy settings.
+  ![selectCaptchaWithProxy.png](images/selectCaptchaWithProxy.png)
 
 5. **Customize Payload**:
    - For JSON tasks, supply a full CapMonster JSON object without clientKey. 
    - For built-in task types, fill the provided fields (e.g., websiteURL, websiteKey, userAgent, metadata). 
-   - If the task supports proxies, enable Use Proxy and fill the proxy details.
-   - 
-![img_2.png](images/img_2.png)
+   - If the task supports proxies, enable Use Proxy and fill the proxy details.![img_2.png](images/img_2.png)
+
     - Find the exact JSON structure in the [Official Task Documentation](https://docs.capmonster.cloud/docs/captchas/).
       ```json 
       {
