@@ -18,7 +18,7 @@ export const waitForResult = async (
 	context: IExecuteFunctions,
 	apiKey: string,
 	taskId: number,
-	maxAttempts = 30,
+	maxAttempts = 180,
 	delay = 1000,
 ): Promise<IDataObject> => {
 	for (let attempt = 1; attempt <= maxAttempts; attempt++) {

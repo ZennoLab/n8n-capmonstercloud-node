@@ -8,10 +8,10 @@ import {
 } from 'n8n-workflow';
 
 import { request, waitForResult } from './transport/request';
-import { taskBuilders } from './tasks';
-import allFields from './descriptions';
 import { TaskType } from './types';
 import { softId } from './const';
+import { taskBuilders } from './taskBuilder';
+import { allFields } from './fields';
 
 type CapmonsterResponse = {
 	errorId: number;
@@ -22,6 +22,7 @@ type CreateTaskResponse = CapmonsterResponse & {
 	taskId: number;
 };
 
+
 export class CapmonsterCloud implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'CapMonster Cloud',
@@ -29,7 +30,7 @@ export class CapmonsterCloud implements INodeType {
 		icon: 'file:favicon.svg',
 		group: ['transform'],
 		version: 1,
-		description: 'Solve captchas via CapMonster Cloud',
+		description: 'Node for solving CAPTCHAs via CapMonsterCloud service.',
 		defaults: { name: 'CapMonster Cloud' },
 		inputs: ['main'],
 		outputs: ['main'],
@@ -56,7 +57,6 @@ export class CapmonsterCloud implements INodeType {
 
 				let task: IDataObject;
 
-
 				if (taskType === 'json') {
 					const raw = this.getNodeParameter('taskJson', i) as string;
 
@@ -74,7 +74,6 @@ export class CapmonsterCloud implements INodeType {
 						);
 					}
 				} else {
-
 					const builder = taskBuilders[taskType];
 
 					if (!builder) {
@@ -85,7 +84,6 @@ export class CapmonsterCloud implements INodeType {
 
 					task = builder.call(this, i);
 				}
-
 
 				task = Object.fromEntries(
 					Object.entries(task).filter(([, v]) => v !== undefined && v !== ''),
