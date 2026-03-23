@@ -42,11 +42,11 @@ export const geeTestV4Fields: INodeProperties[] = [
 	{
 		displayName: 'Init Parameters',
 		name: 'initParameters',
-		type: 'json',
+		type: 'string',
+		typeOptions: { editor: 'codeNodeEditor', rows: 5 },
 		displayOptions: { show: { operation: ['geeTestV4'] } },
-		default: {},
-		description:
-			'Whether Additional parameters for version 4, used together with “riskType” (captcha type/characteristics of its verification)',
+		default: '{}',
+		description: 'JSON string with additional parameters for V4 (will be parsed)',
 	},
 	{
 		displayName: 'User Agent',
@@ -73,8 +73,14 @@ export const buildGeeTestV4 = function (this: IExecuteFunctions, i: number): IDa
 	const getLib = this.getNodeParameter('geetestGetLib', i, '') as string;
 	if (getLib) result.geetestGetLib = getLib;
 
-	const initParams = this.getNodeParameter('initParameters', i, {}) as object;
-	if (initParams && Object.keys(initParams).length > 0) result.initParameters = initParams;
+	const initParamsRaw = this.getNodeParameter('initParameters', i, '{}') as string;
+	let initParams: IDataObject = {};
+	try {
+		initParams = JSON.parse(initParamsRaw);
+	} catch {
+		throw new Error('Init Parameters must be valid JSON');
+	}
+	if (Object.keys(initParams).length) result.initParameters = initParams;
 
 	const ua = this.getNodeParameter('userAgent', i, '') as string;
 	if (ua) result.userAgent = ua;
