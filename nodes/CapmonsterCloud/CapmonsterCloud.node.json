@@ -3,7 +3,6 @@
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": ["Development", "Automation"],
-	"details": "Solve various CAPTCHA types using CapMonster Cloud.\n\nSupported CAPTCHA types:\n\n• reCAPTCHA V2 / V2 Enterprise\n• reCAPTCHA V3 / V3 Enterprise\n• Cloudflare Turnstile\n• GeeTest (V3 / V4)\n• FunCaptcha (Arkose Labs)\n• DataDome\n• Imperva\n• Amazon WAF\n• Binance\n• Basilisk\n• TenDI\n• Altcha\n• Yidun\n• Prosopo\n• MTCaptcha\n• Castle\n• TSPD\n• Hunt\n\nYou can also provide custom JSON tasks for advanced use cases.",
 	"resources": {
 		"primaryDocumentation": [
 			{

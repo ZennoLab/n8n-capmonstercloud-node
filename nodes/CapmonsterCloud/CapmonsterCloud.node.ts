@@ -5,11 +5,13 @@ import {
 	INodeTypeDescription,
 	NodeOperationError,
 	IDataObject,
+	NodeApiError,
+	JsonObject,
+	NodeConnectionTypes,
 } from 'n8n-workflow';
 
 import { request, waitForResult } from './transport/request';
 import { TaskType } from './types';
-import { softId } from './const';
 import { taskBuilders } from './taskBuilder';
 import { allFields } from './fields';
 
@@ -31,9 +33,10 @@ export class CapmonsterCloud implements INodeType {
 		group: ['transform'],
 		version: 1,
 		description: 'Node for solving CAPTCHAs via CapMonsterCloud service.',
+		subtitle: '={{$parameter["operation"]}}',
 		defaults: { name: 'CapMonster Cloud' },
-		inputs: ['main'],
-		outputs: ['main'],
+		inputs: [NodeConnectionTypes.Main],
+		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
 				name: 'capmonsterCloudApi',
@@ -50,9 +53,6 @@ export class CapmonsterCloud implements INodeType {
 
 		for (let i = 0; i < items.length; i++) {
 			try {
-				const credentials = await this.getCredentials('capmonsterCloudApi');
-				const apiKey = credentials.apiKey as string;
-
 				const operation = this.getNodeParameter('operation', i) as TaskType;
 
 				let task: IDataObject;
@@ -90,9 +90,7 @@ export class CapmonsterCloud implements INodeType {
 				);
 
 				const createTask = (await request(this, 'https://api.capmonster.cloud/createTask', {
-					clientKey: apiKey,
 					task,
-					softId,
 				})) as CreateTaskResponse;
 
 				if (createTask.errorId !== 0) {
@@ -103,7 +101,7 @@ export class CapmonsterCloud implements INodeType {
 					);
 				}
 
-				const solution = await waitForResult(this, apiKey, createTask.taskId);
+				const solution = await waitForResult(this, createTask.taskId);
 
 				returnData.push({
 					json: solution,
@@ -118,7 +116,7 @@ export class CapmonsterCloud implements INodeType {
 					continue;
 				}
 
-				throw new NodeOperationError(this.getNode(), error as Error, {
+				throw new NodeApiError(this.getNode(), error as JsonObject, {
 					itemIndex: i,
 				});
 			}

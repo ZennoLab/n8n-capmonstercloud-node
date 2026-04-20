@@ -10,7 +10,7 @@ export const geeTestV4Fields: INodeProperties[] = [
 		required: true,
 		displayOptions: { show: { operation: ['geeTestV4'] } },
 		default: '',
-		description: 'Whether Address of the page on which the captcha is solved',
+		description: 'Address of the page on which the captcha is solved',
 	},
 	{
 		displayName: 'GT',
@@ -19,7 +19,7 @@ export const geeTestV4Fields: INodeProperties[] = [
 		required: true,
 		displayOptions: { show: { operation: ['geeTestV4'] } },
 		default: '',
-		description: 'Whether The GeeTest identifier key for the domain - the captcha_id parameter',
+		description: 'GeeTest identifier key for the domain (captcha_id parameter)',
 	},
 	{
 		displayName: 'Geetest API Subdomain',
@@ -54,7 +54,7 @@ export const geeTestV4Fields: INodeProperties[] = [
 		type: 'string',
 		displayOptions: { show: { operation: ['geeTestV4'] } },
 		default: defaultUserAgent,
-		description: 'Whether Browser User-Agent used to recognize captcha',
+		description: 'Browser User-Agent used to recognize captcha',
 	},
 ];
 
