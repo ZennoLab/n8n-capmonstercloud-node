@@ -14,6 +14,7 @@ import { request, waitForResult } from './transport/request';
 import { TaskType } from './types';
 import { taskBuilders } from './taskBuilder';
 import { allFields } from './fields';
+import { formatCapmonsterError } from './utils';
 
 type CapmonsterResponse = {
 	errorId: number;
@@ -96,7 +97,7 @@ export class CapmonsterCloud implements INodeType {
 				if (createTask.errorId !== 0) {
 					throw new NodeOperationError(
 						this.getNode(),
-						createTask.errorDescription || 'CreateTask failed',
+						formatCapmonsterError('CreateTask', createTask),
 						{ itemIndex: i },
 					);
 				}
