@@ -14,11 +14,13 @@ import { buildTurnstileWaitRoom } from './captchas/turnstileWaitRoom';
 import { buildComplexImageRecognition } from './captchas/complexImageRecognition';
 import { buildDataDome } from './captchas/datadome';
 import { buildImageToText } from './captchas/imageToText';
+import { buildFriendlyTask } from './captchas/friendly';
 import { buildBasiliskTask } from './captchas/basilisk';
 import { buildTenDITask } from './captchas/tendi';
 import { buildAmazonJsApi } from './captchas/amazonJsapi';
 import {  buildAmazonFullChallenge } from './captchas/amazonFullChallenge';
 import { buildAmazonInvisibleChallenge } from './captchas/amazonInvisibleChallenge';
+import { buildAlibabaTask } from './captchas/alibaba';
 import { buildBinanceTask } from './captchas/binance';
 import { buildImpervaTask } from './captchas/imperva';
 import { buildProsopoTask } from './captchas/prosopo';
@@ -50,11 +52,13 @@ export const taskBuilders: Record<TaskType, Builder> = {
 	turnstileChallengeCfClearance: buildTurnstileChallengeCfClearance,
 	complexImageRecognition: buildComplexImageRecognition,
 	datadome: buildDataDome,
+	friendly: buildFriendlyTask,
 	basilisk: buildBasiliskTask,
 	tendi: buildTenDITask,
 	amazonJsApi: buildAmazonJsApi,
 	amazonFullChallenge: buildAmazonFullChallenge,
 	amazonInvisibleChallenge: buildAmazonInvisibleChallenge,
+	alibaba: buildAlibabaTask,
 	binance: buildBinanceTask,
 	imperva: buildImpervaTask,
 	prosopo: buildProsopoTask,
