@@ -31,6 +31,8 @@ import { turnstileChallengeCfClearance } from './captchas/turnstileChallengeCfCl
 import { amazonFullChallenge } from './captchas/amazonFullChallenge';
 import { amazonJsApi } from './captchas/amazonJsapi';
 import { amazonInvisibleChallenge } from './captchas/amazonInvisibleChallenge';
+import { alibaba } from './captchas/alibaba';
+import { friendly } from './captchas/friendly';
 import { TaskType } from './types';
 
 
@@ -39,6 +41,7 @@ const options: Array<{ name: string; value: TaskType }> = [
 	{ name: 'Amazon Full Challenge', value: 'amazonFullChallenge' },
 	{ name: 'Amazon Invisible Challenge', value: 'amazonInvisibleChallenge' },
 	{ name: 'Amazon JS API', value: 'amazonJsApi' },
+	{ name: 'Alibaba', value: 'alibaba' },
 	{ name: 'Basilisk', value: 'basilisk' },
 	{ name: 'Binance', value: 'binance' },
 	{ name: 'Castle', value: 'castle' },
@@ -48,6 +51,7 @@ const options: Array<{ name: string; value: TaskType }> = [
 	{ name: 'Cloudflare Waiting Room', value: 'turnstileWaitRoom' },
 	{ name: 'Complex Image Recognition', value: 'complexImageRecognition' },
 	{ name: 'DataDome', value: 'datadome' },
+	{ name: 'Friendly Captcha', value: 'friendly' },
 	{ name: 'FunCaptcha', value: 'funcaptcha' },
 	{ name: 'Gee Test V3', value: 'geeTestV3' },
 	{ name: 'Gee Test V4', value: 'geeTestV4' },
@@ -92,6 +96,7 @@ export const allFields: INodeProperties[] = [
 	...turnstileWaitRoom,
 	...complexImageRecognition,
 	...datadome,
+	...friendly,
 	...basilisk,
 	...tendi,
 	...binance,
@@ -99,6 +104,7 @@ export const allFields: INodeProperties[] = [
 	...amazonJsApi,
 	...amazonInvisibleChallenge,
 	...amazonFullChallenge,
+	...alibaba,
 	...prosopo,
 	...temu,
 	...yidun,
