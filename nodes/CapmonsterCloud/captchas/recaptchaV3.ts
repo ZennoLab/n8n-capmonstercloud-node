@@ -43,7 +43,7 @@ export const recaptchaV3: INodeProperties[] = [
 
 export const buildRecaptchaV3 = function (this: IExecuteFunctions, i: number): IDataObject {
 	return {
-		type: 'RecaptchaV3Task',
+		type: 'RecaptchaV3TaskProxyless',
 		websiteURL: this.getNodeParameter('websiteURL', i),
 		websiteKey: this.getNodeParameter('websiteKey', i),
 		minScore: this.getNodeParameter('minScore', i),

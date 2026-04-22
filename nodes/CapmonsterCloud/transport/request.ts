@@ -1,4 +1,5 @@
 import { IExecuteFunctions, IDataObject, NodeOperationError, sleep } from 'n8n-workflow';
+import { formatCapmonsterError } from '../utils';
 
 export const request = async (
 	context: IExecuteFunctions,
@@ -27,7 +28,7 @@ export const waitForResult = async (
 		if (result.errorId !== 0) {
 			throw new NodeOperationError(
 				context.getNode(),
-				result.errorDescription || 'CapMonster error',
+				formatCapmonsterError('GetTaskResult', result),
 			);
 		}
 
